@@ -1,20 +1,16 @@
-[README.md](https://github.com/user-attachments/files/22256996/README.md)
-# FotoSender Android App
+# FotoSender - Android Beispielprojekt
 
-Dies ist ein Beispielprojekt für Android (Kotlin), das:
+Dieses Minimalprojekt ermöglicht:
+- Foto mit Kamera aufnehmen (Thumbnail via `MediaStore.ACTION_IMAGE_CAPTURE`)
+- Kompressionsgrad wählen (50% oder 25% Qualitätswert)
+- Auswahl zwischen zwei vordefinierten E-Mail-Adressen
+- Versand über das Standard-E-Mail-App (öffnet einen Sende-Dialog)
 
-- Ein Foto mit der Kamera aufnimmt
-- Die Bildqualität auf 50 % oder 25 % reduziert
-- Eine auswählbare E-Mail-Adresse nutzt und das Foto per Mail versendet
+Wichtig:
+- Das Projekt benutzt **Android Gradle Plugin 8.9.0** und **Kotlin 2.2.0** (aktuell stabile Releases zum Zeitpunkt der Erstellung). Siehe `build.gradle` für Details.
+- Der E-Mail-Versand erfolgt per `Intent.ACTION_SEND` und **öffnet** das E-Mail-Programm – vollständig automatisches Senden (ohne Benutzeraktion) erfordert einen SMTP-Server und Zugangsdaten (nicht enthalten).
+- Öffne das Verzeichnis `foto-sender-app` in Android Studio und synchronisiere Gradle. Android Studio wird fehlende Gradle-Wrapper/Versionen automatisch herunterladen, falls nötig.
 
-## GitHub Actions Build
-
-Das Repository enthält einen Workflow `.github/workflows/android.yml`.
-Sobald du den Code nach GitHub pushst, wird automatisch eine **APK gebaut**.
-
-### So funktioniert es:
-1. Repository auf GitHub erstellen und den Inhalt hochladen.
-2. Actions-Tab öffnen → dort startet der Workflow.
-3. Nach erfolgreichem Build findest du die `app-debug.apk` im Bereich **Artifacts**.
-
-Diese APK kannst du direkt auf deinem Smartphone installieren.
+Änderungen / Anpassungen die du ggf. möchtest:
+- Vollauflösung-Fotos statt Thumbnails: Implementiere FileProvider und speichere das Foto in einer Datei.
+- Vollautomatischer Versand: Implementiere einen SMTP-Client (z.B. JavaMail) und sichere die Zugangsdaten serverseitig oder per Benutzereingabe.
